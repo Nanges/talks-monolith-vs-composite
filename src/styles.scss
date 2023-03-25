@@ -1,0 +1,101 @@
+/* tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1{
+    font-size:x-large;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2.5rem;
+}
+
+h2{
+    font-size: large;
+    margin-bottom: 1.5rem;
+}
+
+label{
+    font-size: .875rem;
+}
+
+.clickable-card{
+    box-sizing: border-box;
+    border:1px solid transparent;
+    padding:.75rem;
+    border-radius: 4px;
+    position:relative;
+    background-color:#d5e9de;
+    font-size:.875rem;
+    
+
+    &:hover{
+        border:1px solid #a1b1a8;
+        box-shadow: 0 0 7px 0px rgba(0,0,0,.2);
+    }
+
+    a.stretched-link::after{
+        content:' ';
+        position:absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+%btn{
+    display:inline-flex;
+    align-items: center;
+    padding:0 1.25rem;
+    height:2rem;
+    line-height:0;
+    font-size: .875rem;
+}
+
+%text-btn{
+    color: rgb(67, 97, 163);
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+
+.save-btn{
+    @extend %btn;
+    border-radius: 4px;
+    background-color: rgb(67, 97, 163);
+    color: #fff;
+
+    &:hover{
+        background-color: rgb(50, 67, 102);
+    }
+}
+
+.cancel-btn{
+    @extend %btn;
+    @extend %text-btn;
+}
+
+.create-btn{
+    @extend %text-btn;
+}
+
+.remove-btn{
+    @extend %btn;
+    border-radius: 4px;
+    background-color: rgb(163, 67, 67);
+    color: #fff;
+
+    &:hover{
+        background-color: rgb(102, 50, 50);
+    }
+}
+
+.remove-pane{
+    border-top:1px solid #ddd;
+    margin-top: 2rem;
+    padding-top:1rem;
+}
