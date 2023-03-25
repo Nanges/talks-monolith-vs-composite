@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryFormComponent } from './category-form/category-form.component';
+import { AddCategoryFormComponent } from './add-category-form/add-category-form.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryScreenComponent } from './category-screen/category-screen.component';
 import { CategoryResolver } from './category.resolver';
+import { UpdateCategoryFormComponent } from './update-category-form/update-category-form.component';
 
 const routes: Routes = [
     {
@@ -12,11 +13,11 @@ const routes: Routes = [
         children: [
             {
                 path: 'create',
-                component: CategoryFormComponent,
+                component: AddCategoryFormComponent,
             },
             {
                 path: ':id',
-                component: CategoryFormComponent,
+                component: UpdateCategoryFormComponent,
                 resolve: {
                     category: CategoryResolver,
                 },

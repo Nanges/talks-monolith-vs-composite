@@ -2,9 +2,11 @@
 <form [formGroup]="form" (ngSubmit)="saveHandler()">
     <!-- Fields section -->
     <ng-content></ng-content>
+    <!-- Main actions section -->
     <div class="mb-4">
         <button type="submit" class="save-btn">Save</button>
         <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
     </div>
+    <!-- Optional actions section -->
     <ng-content select="app-remove-pane"></ng-content>
 </form>

@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
     selector: 'app-edition-layout',
     templateUrl: './edition-layout.component.html',
-    styleUrls: ['./edition-layout.component.scss'],
+    host: { class: 'block' },
 })
 export class EditionLayoutComponent {
     readonly form: FormGroup;
