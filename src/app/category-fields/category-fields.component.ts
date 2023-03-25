@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { EDITION_LAYOUT_DECORATED, FormHost } from '../shared/edition-layout/edition-layout';
+import { FormHost, SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
 
 @Component({
     selector: 'app-category-fields',
@@ -13,5 +13,5 @@ export class CategoryFieldsComponent {
         return this.host.form;
     }
 
-    constructor(@Inject(EDITION_LAYOUT_DECORATED) private host: FormHost) {}
+    constructor(@Inject(SAVE_CAPABILITY) private host: FormHost) {}
 }

@@ -1,7 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
-import { EDITION_LAYOUT_DECORATED } from '../shared/edition-layout/edition-layout';
+import { SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
 
 @Component({
     selector: 'app-add-category-form',
@@ -12,7 +12,7 @@ import { EDITION_LAYOUT_DECORATED } from '../shared/edition-layout/edition-layou
     `,
     providers: [
         {
-            provide: EDITION_LAYOUT_DECORATED,
+            provide: SAVE_CAPABILITY,
             useExisting: forwardRef(() => AddCategoryFormComponent),
         },
     ],

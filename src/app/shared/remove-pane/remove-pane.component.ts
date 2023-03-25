@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { RemovePane, REMOVE_PANE_DECORATED } from './remove-pane';
+import { RemoveCapability, REMOVE_CAPABILITY } from './remove-capability';
 
 @Component({
     selector: 'app-remove-pane',
@@ -9,11 +9,11 @@ import { RemovePane, REMOVE_PANE_DECORATED } from './remove-pane';
         class: 'remove-pane',
     },
 })
-export class RemovePaneComponent implements RemovePane {
+export class RemovePaneComponent implements RemoveCapability {
     /**
      *
      */
-    constructor(@Inject(REMOVE_PANE_DECORATED) private decorated: RemovePane, private router: Router) {}
+    constructor(@Inject(REMOVE_CAPABILITY) private decorated: RemoveCapability, private router: Router) {}
 
     removeHandler() {
         if (confirm('Are you sure ?')) {

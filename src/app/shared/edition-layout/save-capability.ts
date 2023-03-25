@@ -5,8 +5,8 @@ export interface FormHost {
     readonly form: FormGroup;
 }
 
-export interface EditionLayout extends FormHost {
+export interface SaveCapability extends FormHost {
     saveHandler(): void;
 }
 
-export const EDITION_LAYOUT_DECORATED = new InjectionToken<EditionLayout>('Decorated by EditionLayout');
+export const SAVE_CAPABILITY = new InjectionToken<SaveCapability>('Save capability object');

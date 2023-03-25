@@ -2,8 +2,8 @@ import { Component, forwardRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
-import { EDITION_LAYOUT_DECORATED } from '../shared/edition-layout/edition-layout';
-import { RemovePane, REMOVE_PANE_DECORATED } from '../shared/remove-pane/remove-pane';
+import { SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
+import { RemoveCapability, REMOVE_CAPABILITY } from '../shared/remove-pane/remove-capability';
 
 @Component({
     selector: 'app-update-category-form',
@@ -13,16 +13,16 @@ import { RemovePane, REMOVE_PANE_DECORATED } from '../shared/remove-pane/remove-
     </app-edition-layout>`,
     providers: [
         {
-            provide: EDITION_LAYOUT_DECORATED,
+            provide: SAVE_CAPABILITY,
             useExisting: forwardRef(() => UpdateCategoryFormComponent),
         },
         {
-            provide: REMOVE_PANE_DECORATED,
+            provide: REMOVE_CAPABILITY,
             useExisting: forwardRef(() => UpdateCategoryFormComponent),
         },
     ],
 })
-export class UpdateCategoryFormComponent extends BaseCategoryForm implements RemovePane {
+export class UpdateCategoryFormComponent extends BaseCategoryForm implements RemoveCapability {
     private readonly index: number;
 
     constructor(route: ActivatedRoute, private categoryService: CategoryService) {

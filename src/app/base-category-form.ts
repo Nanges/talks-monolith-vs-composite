@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { EditionLayout } from './shared/edition-layout/edition-layout';
+import { SaveCapability } from './shared/edition-layout/save-capability';
 
-export abstract class BaseCategoryForm implements EditionLayout {
+export abstract class BaseCategoryForm implements SaveCapability {
     readonly form: FormGroup<any>;
 
     constructor() {
