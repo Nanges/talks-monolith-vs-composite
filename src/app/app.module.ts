@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryScreenComponent } from './category-screen/category-screen.component';
+import { EditionLayoutComponent } from './shared/edition-layout/edition-layout.component';
+import { RemovePaneComponent } from './shared/remove-pane/remove-pane.component';
 
 @NgModule({
-    declarations: [AppComponent, CategoryListComponent, CategoryFormComponent, CategoryScreenComponent],
+    declarations: [AppComponent, CategoryListComponent, CategoryFormComponent, CategoryScreenComponent, EditionLayoutComponent, RemovePaneComponent],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],

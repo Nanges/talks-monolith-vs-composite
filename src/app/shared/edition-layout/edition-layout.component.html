@@ -1,0 +1,10 @@
+<h2>{{ title }}</h2>
+<form [formGroup]="form" (ngSubmit)="saveHandler()">
+    <!-- Fields section -->
+    <ng-content></ng-content>
+    <div class="mb-4">
+        <button type="submit" class="save-btn">Save</button>
+        <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
+    </div>
+    <ng-content select="app-remove-pane"></ng-content>
+</form>
