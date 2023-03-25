@@ -17,6 +17,4 @@ export class EditionLayoutComponent {
     }
 
     saveHandler() {}
-
-    removeHandler() {}
 }
