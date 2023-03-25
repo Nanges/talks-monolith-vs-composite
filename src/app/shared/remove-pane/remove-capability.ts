@@ -6,7 +6,7 @@ export interface RemoveCapability {
 
 export const REMOVE_CAPABILITY = new InjectionToken<RemoveCapability>('Remove capability object');
 
-export function provideRemoveCapability(ctor: Type<any>): Provider {
+export function provideRemoveCapability(ctor: Type<RemoveCapability>): Provider {
     return {
         provide: REMOVE_CAPABILITY,
         useExisting: forwardRef(() => ctor),

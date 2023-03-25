@@ -11,7 +11,7 @@ export interface SaveCapability extends FormHost {
 
 export const SAVE_CAPABILITY = new InjectionToken<SaveCapability>('Save capability object');
 
-export function provideSaveCapability(ctor: Type<any>): Provider {
+export function provideSaveCapability(ctor: Type<SaveCapability>): Provider {
     return {
         provide: SAVE_CAPABILITY,
         useExisting: forwardRef(() => ctor),
