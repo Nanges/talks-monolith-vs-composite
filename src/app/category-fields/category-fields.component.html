@@ -1,4 +1,6 @@
-<div class="form-field">
-    <label for="category" class="block mb-1">Category</label>
-    <input type="text" id="category" />
-</div>
+<ng-container [formGroup]="form">
+    <div class="form-field">
+        <label for="category" class="block mb-1">Category</label>
+        <input type="text" id="category" formControlName="category" />
+    </div>
+</ng-container>

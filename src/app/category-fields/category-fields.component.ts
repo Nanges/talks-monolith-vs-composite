@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { EDITION_LAYOUT_DECORATED, FormHost } from '../shared/edition-layout/edition-layout';
 
 @Component({
     selector: 'app-category-fields',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
         class: 'flex flex-col gap-y-3 mb-8',
     },
 })
-export class CategoryFieldsComponent implements OnInit {
-    constructor() {}
+export class CategoryFieldsComponent {
+    get form() {
+        return this.host.form;
+    }
 
-    ngOnInit(): void {}
+    constructor(@Inject(EDITION_LAYOUT_DECORATED) private host: FormHost) {}
 }

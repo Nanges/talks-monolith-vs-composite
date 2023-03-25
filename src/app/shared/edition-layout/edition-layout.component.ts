@@ -1,20 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { EditionLayout, EDITION_LAYOUT_DECORATED } from './edition-layout';
 
 @Component({
     selector: 'app-edition-layout',
     templateUrl: './edition-layout.component.html',
     host: { class: 'block' },
 })
-export class EditionLayoutComponent {
-    readonly form: FormGroup;
+export class EditionLayoutComponent implements EditionLayout {
     @Input() title!: string;
 
-    readonly hasRemoveCapability: boolean = false;
-
-    constructor() {
-        this.form = new FormGroup({});
+    get form() {
+        return this.decorated.form;
     }
 
-    saveHandler() {}
+    constructor(@Inject(EDITION_LAYOUT_DECORATED) private decorated: EditionLayout, private router: Router) {}
+
+    saveHandler() {
+        this.decorated.saveHandler();
+        this.router.navigateByUrl('../');
+    }
 }
