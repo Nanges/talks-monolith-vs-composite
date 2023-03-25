@@ -1,9 +1,9 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
-import { SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
-import { RemoveCapability, REMOVE_CAPABILITY } from '../shared/remove-pane/remove-capability';
+import { provideSaveCapability } from '../shared/edition-layout/save-capability';
+import { provideRemoveCapability, RemoveCapability } from '../shared/remove-pane/remove-capability';
 
 @Component({
     selector: 'app-update-category-form',
@@ -11,16 +11,7 @@ import { RemoveCapability, REMOVE_CAPABILITY } from '../shared/remove-pane/remov
         <app-category-fields></app-category-fields>
         <app-remove-pane></app-remove-pane>
     </app-edition-layout>`,
-    providers: [
-        {
-            provide: SAVE_CAPABILITY,
-            useExisting: forwardRef(() => UpdateCategoryFormComponent),
-        },
-        {
-            provide: REMOVE_CAPABILITY,
-            useExisting: forwardRef(() => UpdateCategoryFormComponent),
-        },
-    ],
+    providers: [provideSaveCapability(UpdateCategoryFormComponent), provideRemoveCapability(UpdateCategoryFormComponent)],
 })
 export class UpdateCategoryFormComponent extends BaseCategoryForm implements RemoveCapability {
     private readonly index: number;

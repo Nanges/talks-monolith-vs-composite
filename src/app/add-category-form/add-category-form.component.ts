@@ -1,7 +1,7 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
-import { SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
+import { provideSaveCapability } from '../shared/edition-layout/save-capability';
 
 @Component({
     selector: 'app-add-category-form',
@@ -10,12 +10,7 @@ import { SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
             <app-category-fields></app-category-fields>
         </app-edition-layout>
     `,
-    providers: [
-        {
-            provide: SAVE_CAPABILITY,
-            useExisting: forwardRef(() => AddCategoryFormComponent),
-        },
-    ],
+    providers: [provideSaveCapability(AddCategoryFormComponent)],
 })
 export class AddCategoryFormComponent extends BaseCategoryForm {
     constructor(private categoryService: CategoryService) {
