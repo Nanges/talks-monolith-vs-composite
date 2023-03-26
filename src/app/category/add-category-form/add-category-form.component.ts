@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BaseCategoryForm } from '../base-category-form';
+import { BaseCategoryForm } from '../../base-category-form';
+import { provideSaveCapability } from '../../shared/edition-layout/save-capability';
 import { CategoryService } from '../category.service';
-import { provideSaveCapability } from '../shared/edition-layout/save-capability';
 
 @Component({
     selector: 'app-add-category-form',

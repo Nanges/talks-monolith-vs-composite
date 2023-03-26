@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormHost, SAVE_CAPABILITY } from '../shared/edition-layout/save-capability';
+import { FormHost, SAVE_CAPABILITY } from '../../shared/edition-layout/save-capability';
 
 @Component({
     selector: 'app-category-fields',
