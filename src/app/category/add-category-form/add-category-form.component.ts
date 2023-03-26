@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseCategoryForm } from '../../base-category-form';
 import { provideSaveCapability } from '../../shared/edition-layout/save-capability';
+import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
 
 @Component({

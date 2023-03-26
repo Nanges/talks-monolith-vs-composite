@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseCategoryForm } from '../../base-category-form';
 import { provideSaveCapability } from '../../shared/edition-layout/save-capability';
 import { provideRemoveCapability, RemoveCapability } from '../../shared/remove-pane/remove-capability';
+import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
 
 @Component({
