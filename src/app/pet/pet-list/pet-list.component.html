@@ -1,0 +1,10 @@
+<div class="mb-4">
+    <a [routerLink]="['.', 'create']" class="text-btn">New pet</a>
+</div>
+<ul class="flex flex-col gap-y-3">
+    <li class="clickable-card" *ngFor="let pet of data; let id = index">
+        <a [routerLink]="['.', id]" class="stretched-link font-semibold">{{ pet.name }}</a
+        ><br />
+        <span class="text-sm">{{ pet.category }}</span>
+    </li>
+</ul>

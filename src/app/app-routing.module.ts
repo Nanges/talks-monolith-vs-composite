@@ -7,8 +7,12 @@ const routes: Routes = [
         loadChildren: () => import('./category/category.module').then((m) => m.CategoryModule),
     },
     {
+        path: 'pets',
+        loadChildren: () => import('./pet/pet.module').then((m) => m.PetModule),
+    },
+    {
         path: '**',
-        redirectTo: 'categories',
+        redirectTo: 'pets',
     },
 ];
 
