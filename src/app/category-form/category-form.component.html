@@ -6,20 +6,11 @@
             <input type="text" id="category" formControlName="category" />
         </div>
     </div>
-    <ng-container *ngTemplateOutlet="creationMode ? createTpl : updateTpl"></ng-container>
-</form>
-<ng-template #createTpl>
     <div class="mb-4">
-        <button class="save-btn" (click)="createHandler()">Save</button>
+        <button class="save-btn" (click)="saveHandler()">Save</button>
         <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
     </div>
-</ng-template>
-<ng-template #updateTpl>
-    <div class="mb-4">
-        <button class="save-btn" (click)="updateHandler()">Save</button>
-        <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
-    </div>
-    <div class="remove-pane">
+    <div *ngIf="!creationMode" class="remove-pane">
         <button class="remove-btn" (click)="removeHandler()">Remove</button>
     </div>
-</ng-template>
+</form>

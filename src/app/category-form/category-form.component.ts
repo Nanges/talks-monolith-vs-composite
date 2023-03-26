@@ -29,14 +29,8 @@ export class CategoryFormComponent {
         }
     }
 
-    createHandler() {
-        this.categoryService.create(this.form.value['category']);
-        this.router.navigate(['categories']);
-    }
-
-    updateHandler() {
-        this.categoryService.update(this.index, this.form.value['category']);
-        this.router.navigate(['categories']);
+    saveHandler() {
+        this.creationMode ? this.createHandler() : this.updateHandler();
     }
 
     removeHandler() {
@@ -44,6 +38,16 @@ export class CategoryFormComponent {
             this.categoryService.remove(this.index);
             this.router.navigate(['categories']);
         }
+    }
+
+    private createHandler() {
+        this.categoryService.create(this.form.value['category']);
+        this.router.navigate(['categories']);
+    }
+
+    private updateHandler() {
+        this.categoryService.update(this.index, this.form.value['category']);
+        this.router.navigate(['categories']);
     }
 
     private buildForm() {
