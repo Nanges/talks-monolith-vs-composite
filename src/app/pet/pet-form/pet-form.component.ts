@@ -15,16 +15,16 @@ export class PetFormComponent {
     constructor(route: ActivatedRoute, private petService: PetService, private router: Router) {
         this.form = this.buildForm();
         this.index = Number(route.snapshot.paramMap.get('id'));
-        const category = route.snapshot.data['category'];
+        const pet = route.snapshot.data['pet'];
 
-        if (category === undefined) {
+        if (pet === undefined) {
             // creation mode
             this.creationMode = true;
         } else {
             // edition mode
             this.creationMode = false;
             this.form.setValue({
-                category,
+                category: pet,
             });
         }
     }
@@ -36,22 +36,23 @@ export class PetFormComponent {
     removeHandler() {
         if (confirm('Are you sure ?')) {
             this.petService.remove(this.index);
-            this.router.navigate(['categories']);
+            this.router.navigate(['pets']);
         }
     }
 
     private createHandler() {
-        this.petService.create(this.form.value['category']);
-        this.router.navigate(['categories']);
+        this.petService.create(this.form.value['pet']);
+        this.router.navigate(['pets']);
     }
 
     private updateHandler() {
-        this.petService.update(this.index, this.form.value['category']);
-        this.router.navigate(['categories']);
+        this.petService.update(this.index, this.form.value['pet']);
+        this.router.navigate(['pets']);
     }
 
     private buildForm() {
         return new FormGroup({
+            name: new FormControl(),
             category: new FormControl(),
         });
     }
