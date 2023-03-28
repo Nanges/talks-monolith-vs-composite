@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pet-screen',
-  templateUrl: './pet-screen.component.html',
-  styleUrls: ['./pet-screen.component.scss']
+    selector: 'app-pet-screen',
+    templateUrl: './pet-screen.component.html',
 })
 export class PetScreenComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {}
 }

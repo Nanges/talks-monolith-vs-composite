@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pet-form',
-  templateUrl: './pet-form.component.html',
-  styleUrls: ['./pet-form.component.scss']
+    selector: 'app-pet-form',
+    templateUrl: './pet-form.component.html',
 })
 export class PetFormComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {}
 }
