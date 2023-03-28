@@ -26,7 +26,6 @@ label{
     border-radius: 4px;
     position:relative;
     background-color:#d5e9de;
-    font-size:.875rem;
     
 
     &:hover{
@@ -79,7 +78,7 @@ label{
     @extend %text-btn;
 }
 
-.create-btn{
+.text-btn{
     @extend %text-btn;
 }
 
@@ -95,6 +94,7 @@ label{
 }
 
 .remove-pane{
+    display: block;
     border-top:1px solid #ddd;
     margin-top: 2rem;
     padding-top:1rem;
