@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-pet-screen',
-    templateUrl: './pet-screen.component.html',
+    template: `<h1>Pets</h1>
+        <router-outlet></router-outlet>`,
 })
-export class PetScreenComponent implements OnInit {
+export class PetScreenComponent {
     constructor() {}
-
-    ngOnInit(): void {}
 }
