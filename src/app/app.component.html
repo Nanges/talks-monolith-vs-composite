@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div class="container grid grid-cols-4 gap-4 mx-auto mt-4">
+    <nav>
+        <ul>
+            <li>
+                <a [routerLink]="['pets']" class="text-btn">Pets</a>
+            </li>
+            <li>
+                <a [routerLink]="['categories']" class="text-btn">Categories</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-span-3">
+        <router-outlet></router-outlet>
+    </div>
+</div>
