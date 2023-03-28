@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PetService } from '../pet.service';
 
 @Component({
     selector: 'app-pet-list',
     templateUrl: './pet-list.component.html',
 })
-export class PetListComponent implements OnInit {
-    constructor() {}
+export class PetListComponent {
+    get data() {
+        return this.petService.data;
+    }
 
-    ngOnInit(): void {}
+    constructor(private petService: PetService) {}
 }
