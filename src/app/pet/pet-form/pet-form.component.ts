@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from '../../category/category.service';
 import { PetService } from '../pet.service';
 
 @Component({
@@ -12,7 +13,11 @@ export class PetFormComponent {
     readonly creationMode: boolean;
     readonly form: FormGroup;
 
-    constructor(route: ActivatedRoute, private petService: PetService, private router: Router) {
+    get categories() {
+        return this.categoryService.data;
+    }
+
+    constructor(route: ActivatedRoute, private petService: PetService, private router: Router, private categoryService: CategoryService) {
         this.form = this.buildForm();
         this.index = Number(route.snapshot.paramMap.get('id'));
         const pet = route.snapshot.data['pet'];
@@ -23,9 +28,7 @@ export class PetFormComponent {
         } else {
             // edition mode
             this.creationMode = false;
-            this.form.setValue({
-                category: pet,
-            });
+            this.form.setValue(pet);
         }
     }
 
@@ -41,12 +44,12 @@ export class PetFormComponent {
     }
 
     private createHandler() {
-        this.petService.create(this.form.value['pet']);
+        this.petService.create(this.form.value);
         this.router.navigate(['pets']);
     }
 
     private updateHandler() {
-        this.petService.update(this.index, this.form.value['pet']);
+        this.petService.update(this.index, this.form.value);
         this.router.navigate(['pets']);
     }
 

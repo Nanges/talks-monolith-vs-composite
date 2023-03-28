@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class CategoryService {
-    private _data: string[] = ['foo', 'bar', 'baz'];
+    private _data: string[] = ['dog', 'cat', 'fish', 'other'];
     get data() {
         return this._data;
     }
