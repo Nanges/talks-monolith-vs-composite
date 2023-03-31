@@ -12,7 +12,7 @@ export class CategoryFormComponent {
     readonly creationMode: boolean;
     readonly form: FormGroup;
 
-    constructor(route: ActivatedRoute, private categoryService: CategoryService, private router: Router) {
+    constructor(private route: ActivatedRoute, private categoryService: CategoryService, private router: Router) {
         this.form = this.buildForm();
         this.index = Number(route.snapshot.paramMap.get('id'));
         const category = route.snapshot.data['category'];
@@ -36,18 +36,18 @@ export class CategoryFormComponent {
     removeHandler() {
         if (confirm('Are you sure ?')) {
             this.categoryService.remove(this.index);
-            this.router.navigateByUrl('./');
+            this.router.navigate(['../'], { relativeTo: this.route });
         }
     }
 
     private createHandler() {
         this.categoryService.create(this.form.value['category']);
-        this.router.navigateByUrl('./');
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     private updateHandler() {
         this.categoryService.update(this.index, this.form.value['category']);
-        this.router.navigateByUrl('./');
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     private buildForm() {

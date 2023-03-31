@@ -17,7 +17,12 @@ export class PetFormComponent {
         return this.categoryService.data;
     }
 
-    constructor(route: ActivatedRoute, private petService: PetService, private router: Router, private categoryService: CategoryService) {
+    constructor(
+        private route: ActivatedRoute,
+        private petService: PetService,
+        private router: Router,
+        private categoryService: CategoryService
+    ) {
         this.form = this.buildForm();
         this.index = Number(route.snapshot.paramMap.get('id'));
         const pet = route.snapshot.data['pet'];
@@ -39,18 +44,18 @@ export class PetFormComponent {
     removeHandler() {
         if (confirm('Are you sure ?')) {
             this.petService.remove(this.index);
-            this.router.navigate(['pets']);
+            this.router.navigate(['../'], { relativeTo: this.route });
         }
     }
 
     private createHandler() {
         this.petService.create(this.form.value);
-        this.router.navigate(['pets']);
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     private updateHandler() {
         this.petService.update(this.index, this.form.value);
-        this.router.navigate(['pets']);
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     private buildForm() {
