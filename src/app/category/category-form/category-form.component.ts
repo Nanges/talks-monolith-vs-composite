@@ -36,18 +36,18 @@ export class CategoryFormComponent {
     removeHandler() {
         if (confirm('Are you sure ?')) {
             this.categoryService.remove(this.index);
-            this.router.navigate(['categories']);
+            this.router.navigateByUrl('./');
         }
     }
 
     private createHandler() {
         this.categoryService.create(this.form.value['category']);
-        this.router.navigate(['categories']);
+        this.router.navigateByUrl('./');
     }
 
     private updateHandler() {
         this.categoryService.update(this.index, this.form.value['category']);
-        this.router.navigate(['categories']);
+        this.router.navigateByUrl('./');
     }
 
     private buildForm() {
