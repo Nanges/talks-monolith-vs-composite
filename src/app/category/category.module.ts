@@ -8,6 +8,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryScreenComponent } from './category-screen/category-screen.component';
 import { UpdateCategoryFormComponent } from './update-category-form/update-category-form.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { UpdateCategoryFormComponent } from './update-category-form/update-categ
         CategoryFieldsComponent,
         AddCategoryFormComponent,
         UpdateCategoryFormComponent,
+        CategoryFormComponent,
     ],
     imports: [CommonModule, ReactiveFormsModule, SharedModule, CategoryRoutingModule],
 })
