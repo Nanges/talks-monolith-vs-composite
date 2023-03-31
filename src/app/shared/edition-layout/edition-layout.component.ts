@@ -1,5 +1,5 @@
 import { Component, Inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
 
 @Component({
@@ -14,10 +14,10 @@ export class EditionLayoutComponent implements SaveCapability {
         return this.decorated.form;
     }
 
-    constructor(@Inject(SAVE_CAPABILITY) private decorated: SaveCapability, private router: Router) {}
+    constructor(@Inject(SAVE_CAPABILITY) private decorated: SaveCapability, private router: Router, private route: ActivatedRoute) {}
 
     saveHandler() {
         this.decorated.saveHandler();
-        this.router.navigateByUrl('../');
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 }
