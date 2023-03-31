@@ -1,11 +1,7 @@
 import { forwardRef, InjectionToken, Provider, Type } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
-export interface FormHost {
-    readonly form: FormGroup;
-}
-
-export interface SaveCapability extends FormHost {
+export interface SaveCapability {
+    title: string;
     saveHandler(): void;
 }
 

@@ -1,4 +1,5 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
 
@@ -7,14 +8,20 @@ import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
     templateUrl: './edition-layout.component.html',
     host: { class: 'block' },
 })
-export class EditionLayoutComponent implements SaveCapability {
-    @Input() title!: string;
-
-    get form() {
-        return this.decorated.form;
+export class EditionLayoutComponent {
+    get title() {
+        return this.decorated.title;
     }
 
-    constructor(@Inject(SAVE_CAPABILITY) private decorated: SaveCapability, private router: Router) {}
+    get form() {
+        return this.formGroup.control;
+    }
+
+    constructor(
+        @Inject(SAVE_CAPABILITY) private decorated: SaveCapability,
+        private router: Router,
+        private formGroup: FormGroupDirective
+    ) {}
 
     saveHandler() {
         this.decorated.saveHandler();
