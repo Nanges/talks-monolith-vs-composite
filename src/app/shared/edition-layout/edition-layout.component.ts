@@ -1,5 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Inject, Input, Self } from '@angular/core';
 import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
 
 @Component({
@@ -7,17 +6,7 @@ import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
     templateUrl: './edition-layout.component.html',
     host: { class: 'block' },
 })
-export class EditionLayoutComponent implements SaveCapability {
+export class EditionLayoutComponent {
     @Input() title!: string;
-
-    get form() {
-        return this.decorated.form;
-    }
-
-    constructor(@Inject(SAVE_CAPABILITY) private decorated: SaveCapability, private router: Router, private route: ActivatedRoute) {}
-
-    saveHandler() {
-        this.decorated.saveHandler();
-        this.router.navigate(['../'], { relativeTo: this.route });
-    }
+    constructor(@Self() @Inject(SAVE_CAPABILITY) readonly saveCapabilityDirective: SaveCapability) {}
 }

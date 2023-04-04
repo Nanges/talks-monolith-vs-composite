@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { provideSaveCapability } from '../../shared/edition-layout/save-capability';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseCategoryForm } from '../base-category-form';
 import { CategoryService } from '../category.service';
 
 @Component({
     selector: 'app-add-category-form',
     template: `
-        <app-edition-layout [title]="'Add category'">
+        <app-edition-layout io [title]="'Add category'" [form]="form" (save)="saveHandler()">
             <app-category-fields></app-category-fields>
         </app-edition-layout>
     `,
-    providers: [provideSaveCapability(AddCategoryFormComponent)],
 })
 export class AddCategoryFormComponent extends BaseCategoryForm {
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
         super();
     }
 
     saveHandler(): void {
         this.categoryService.create(this.form.value['category']);
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 }

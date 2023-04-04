@@ -7,7 +7,7 @@ import { CategoryService } from '../category.service';
 
 @Component({
     selector: 'app-update-category-form',
-    template: ` <app-edition-layout [title]="'Update category'">
+    template: ` <app-edition-layout withRedirect [title]="'Update category'">
         <app-category-fields></app-category-fields>
         <app-remove-pane></app-remove-pane>
     </app-edition-layout>`,
