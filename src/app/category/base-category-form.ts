@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SaveCapability } from '../shared/edition-layout/save-capability';
 
 export abstract class BaseCategoryForm implements SaveCapability {
@@ -6,7 +6,7 @@ export abstract class BaseCategoryForm implements SaveCapability {
 
     constructor() {
         this.form = new FormGroup({
-            category: new FormControl(),
+            category: new FormControl(null, Validators.required),
         });
     }
 

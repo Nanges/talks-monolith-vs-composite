@@ -1,5 +1,5 @@
-import { Component, Inject, Input, Self } from '@angular/core';
-import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
 
 @Component({
     selector: 'app-edition-layout',
@@ -8,5 +8,11 @@ import { SaveCapability, SAVE_CAPABILITY } from './save-capability';
 })
 export class EditionLayoutComponent {
     @Input() title!: string;
-    constructor(@Self() @Inject(SAVE_CAPABILITY) readonly saveCapabilityDirective: SaveCapability) {}
+    @Output() save = new EventEmitter();
+
+    get form() {
+        return this.formGroupDirective.form;
+    }
+
+    constructor(private formGroupDirective: FormGroupDirective) {}
 }

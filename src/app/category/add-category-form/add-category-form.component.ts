@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../category.service';
 
 @Component({
     selector: 'app-add-category-form',
     template: `
-        <app-edition-layout io [title]="'Add category'" [form]="form" (save)="save()">
+        <app-edition-layout [title]="'Add category'" [formGroup]="form" (save)="save()">
             <app-category-fields></app-category-fields>
         </app-edition-layout>
     `,
@@ -16,7 +16,7 @@ export class AddCategoryFormComponent {
 
     constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
         this.form = new FormGroup({
-            category: new FormControl(),
+            category: new FormControl(null, Validators.required),
         });
     }
 

@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { FormHost, SAVE_CAPABILITY } from '../../shared/edition-layout/save-capability';
+import { Component } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
 
 @Component({
     selector: 'app-category-fields',
@@ -10,8 +10,8 @@ import { FormHost, SAVE_CAPABILITY } from '../../shared/edition-layout/save-capa
 })
 export class CategoryFieldsComponent {
     get form() {
-        return this.host.form;
+        return this.formGroupDirective.form;
     }
 
-    constructor(@Inject(SAVE_CAPABILITY) private host: FormHost) {}
+    constructor(private formGroupDirective: FormGroupDirective) {}
 }

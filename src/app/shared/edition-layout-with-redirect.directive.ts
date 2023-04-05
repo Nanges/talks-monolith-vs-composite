@@ -1,30 +1,39 @@
-import { Directive, forwardRef, Inject, SkipSelf } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SaveCapability, SAVE_CAPABILITY } from './edition-layout/save-capability';
+import { filter, takeUntil, tap } from 'rxjs';
+import { DestroyObservable } from './destroy-observable';
+import { EditionLayoutComponent } from './edition-layout/edition-layout.component';
 
 @Directive({
     selector: 'app-edition-layout[withRedirect]',
-    providers: [
-        {
-            provide: SAVE_CAPABILITY,
-            useExisting: forwardRef(() => EditionLayoutWithRedirectDirective),
-        },
-    ],
+    providers: [DestroyObservable],
 })
-export class EditionLayoutWithRedirectDirective implements SaveCapability {
-    constructor(
-        // Component with business logic only
-        @SkipSelf() @Inject(SAVE_CAPABILITY) private hostComponent: SaveCapability,
-        private router: Router,
-        private route: ActivatedRoute
-    ) {}
+export class EditionLayoutWithRedirectDirective implements OnInit {
+    @Input()
+    saveHandler!: () => void;
 
-    saveHandler(): void {
-        this.hostComponent.saveHandler();
-        this.router.navigate(['..'], { relativeTo: this.route });
+    private get form() {
+        return this.editionLayout.form;
     }
 
-    get form() {
-        return this.hostComponent.form;
+    constructor(
+        // Component with business logic only
+        private editionLayout: EditionLayoutComponent,
+        private router: Router,
+        private route: ActivatedRoute,
+        private isDestroyed: DestroyObservable
+    ) {}
+
+    ngOnInit(): void {
+        this.editionLayout.save
+            .pipe(
+                tap(() => this.form.updateValueAndValidity()),
+                filter(() => this.form.valid),
+                tap(() => this.saveHandler()),
+                takeUntil(this.isDestroyed)
+            )
+            .subscribe(() => {
+                this.router.navigate(['..'], { relativeTo: this.route });
+            });
     }
 }

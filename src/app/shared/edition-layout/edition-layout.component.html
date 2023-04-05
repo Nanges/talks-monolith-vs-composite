@@ -1,5 +1,5 @@
 <h2>{{ title }}</h2>
-<form [formGroup]="saveCapabilityDirective.form" (ngSubmit)="saveCapabilityDirective.saveHandler()">
+<form [formGroup]="form" (ngSubmit)="save.emit()">
     <!-- Fields section -->
     <ng-content></ng-content>
     <!-- Main actions section -->
