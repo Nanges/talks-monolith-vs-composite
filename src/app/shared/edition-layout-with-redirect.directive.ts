@@ -27,9 +27,12 @@ export class EditionLayoutWithRedirectDirective implements OnInit {
     ngOnInit(): void {
         this.editionLayout.save
             .pipe(
-                tap(() => this.form.updateValueAndValidity()),
+                tap(() => {
+                    this.form.updateValueAndValidity();
+                    this.form.markAllAsTouched();
+                }),
                 filter(() => this.form.valid),
-                tap(() => this.saveHandler()),
+                tap(this.saveHandler),
                 takeUntil(this.isDestroyed)
             )
             .subscribe(() => {

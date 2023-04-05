@@ -2,5 +2,6 @@
     <div class="form-field">
         <label for="category" class="block mb-1">Category</label>
         <input type="text" id="category" formControlName="category" />
+        <span class="block text-sm error-msg" *ngIf="form.get('category')?.errors">This field is required</span>
     </div>
 </ng-container>

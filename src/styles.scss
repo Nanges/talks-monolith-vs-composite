@@ -99,3 +99,13 @@ label{
     margin-top: 2rem;
     padding-top:1rem;
 }
+
+.error-msg{
+    margin-top:.5rem;
+    display:none;
+    color:red;
+}
+
+.ng-touched.ng-invalid ~ .error-msg{
+    display: block;
+}

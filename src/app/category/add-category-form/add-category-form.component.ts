@@ -21,7 +21,11 @@ export class AddCategoryFormComponent {
     }
 
     save(): void {
-        this.categoryService.create(this.form.value['category']);
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.form.updateValueAndValidity();
+        this.form.markAllAsTouched();
+        if (this.form.valid) {
+            this.categoryService.create(this.form.value['category']);
+            this.router.navigate(['../'], { relativeTo: this.route });
+        }
     }
 }
