@@ -6,11 +6,11 @@
             <input type="text" id="category" formControlName="category" />
         </div>
     </div>
-    <div class="mb-4">
-        <button class="save-btn" (click)="saveHandler()">Save</button>
+    <div class="action-pane flex justify-end">
         <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
+        <button class="save-btn" (click)="saveHandler()">Save</button>
     </div>
-    <div *ngIf="!creationMode" class="remove-pane">
+    <div *ngIf="!creationMode" class="action-pane">
         <button class="remove-btn" (click)="removeHandler()">Remove</button>
     </div>
 </form>

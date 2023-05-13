@@ -12,9 +12,9 @@
             </select>
         </div>
     </div>
-    <div class="mb-4">
-        <button class="save-btn" (click)="saveHandler()">Save</button>
+    <div class="mb-4 flex justify-end">
         <a [routerLink]="['..']" class="cancel-btn">Cancel</a>
+        <button class="save-btn" (click)="saveHandler()">Save</button>
     </div>
     <div *ngIf="!creationMode" class="remove-pane">
         <button class="remove-btn" (click)="removeHandler()">Remove</button>
