@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '../../category/category.service';
+import { CategoryService } from '../../core/category.service';
 import { PetService } from '../pet.service';
 
 @Component({
