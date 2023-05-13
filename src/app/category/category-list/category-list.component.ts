@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CategoryService } from '../../core/category.service';
 
 @Component({
@@ -6,9 +7,9 @@ import { CategoryService } from '../../core/category.service';
     templateUrl: './category-list.component.html',
 })
 export class CategoryListComponent {
-    get data() {
-        return this.categoryService.data;
-    }
+    readonly data$: Observable<string[]>;
 
-    constructor(private categoryService: CategoryService) {}
+    constructor(private categoryService: CategoryService) {
+        this.data$ = this.categoryService.getCategories();
+    }
 }

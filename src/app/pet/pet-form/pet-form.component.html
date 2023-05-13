@@ -8,7 +8,7 @@
         <div class="form-field">
             <label for="category" class="block mb-1">Category</label>
             <select formControlName="category" id="category">
-                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                <option *ngFor="let category of categories$ | async" [value]="category">{{ category }}</option>
             </select>
         </div>
     </div>

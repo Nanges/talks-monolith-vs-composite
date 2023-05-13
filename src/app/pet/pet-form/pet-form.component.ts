@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CategoryService } from '../../core/category.service';
 import { PetService } from '../pet.service';
 
@@ -12,10 +13,7 @@ export class PetFormComponent {
     readonly index: number;
     readonly creationMode: boolean;
     readonly form: FormGroup;
-
-    get categories() {
-        return this.categoryService.data;
-    }
+    readonly categories$: Observable<string[]>;
 
     constructor(
         private route: ActivatedRoute,
@@ -24,6 +22,7 @@ export class PetFormComponent {
         private categoryService: CategoryService
     ) {
         this.form = this.buildForm();
+        this.categories$ = this.categoryService.getCategories();
         this.index = Number(route.snapshot.paramMap.get('id'));
         const pet = route.snapshot.data['pet'];
 
